@@ -1,4 +1,5 @@
 - name: Поднятие docker compose
+  gather_facts: true
   hosts: all
   roles:
-      - docker_compose
+    - test

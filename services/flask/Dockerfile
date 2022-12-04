@@ -4,13 +4,10 @@ WORKDIR /usr/src/app
 
 EXPOSE 5000
 
-# RUN apt-get update && apt-get install -y netcat
-
 RUN pip install --upgrade pip
-COPY /root/services/flask/requirements.txt /usr/src/app/requirements.txt
+# COPY ./flask/requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
 
-COPY . /usr/src/app/
+# COPY . /usr/src/app/
 
-CMD[""]
-# ENTRYPOINT ["python -m flask --app hello run"]
+CMD["flask", "--app", "hello", "run", "-p", "5000", "--host=0.0.0.0"]
