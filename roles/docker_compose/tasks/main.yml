@@ -7,64 +7,22 @@
     name: "docker<5"
   become: yes
 
-# - name: Copy src
-#   copy:
-#     src: services/flask
-#     dest: ~/
+- name: Copy src
+  copy:
+    src: services/flask
+    dest: ~/services/
 
 - name: Run flask app
   docker_compose:
-    # project_name: flask
     definition:
-      # version: '2'
+      version: "2"
       services:
-        # db:
-#           image: postgres:13-alpine
+        web:
+        build: 
+          context: /root/services/flask/
+          dockerfile: Dockerfile
+          command: "python3 -m flask hello run"
           # volumes:
-          #   - postgres_data:/var/lib/postgresql/data/
-          # ports:
-          #   - "8002:8002"
-          # environment:
-          #   - POSTGRES_USER=hello_flask
-          #   - POSTGRES_PASSWORD=hello_flask
-          #   - POSTGRES_DB=hello_flask_dev
-        # db:
-        #   image: postgres
-        # web:
-        #   build: ".services/flask"
-          # command: "python3 -m /usr/src/app/flask hello run"
-          # command: "python3 -m print(5)"
-          # # volumes:
-          # #   - "services/flask:/code"
-          # ports:
-          #   - "5000:8000"
-          # depends_on:
-          #   - db
-
-
-
-# - name: Run flask app
-#   hosts: 127.0.0.1
-
-#   tasks:
-
-#     - docker_compose:
-#         project_name: flask
-#         definition:
-#           version: '2'
-#           services:
-#             # db:
-#             #   image: postgres
-#             web:
-#               build: "services/flask"
-#               command: "python -m flask hello run"
-#               volumes:
-#                 - "services/flask:/code"
-#               ports:
-#                 - "5000:8000"
-#               # depends_on:
-#               #   - db
-#       register: output
-
-#     - debug:
-#         var: output
+          #   - "services/flask:/code"
+          ports:
+            - "5000:8000"
