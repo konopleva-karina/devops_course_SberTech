@@ -1,0 +1,4 @@
+- name: Поднятие docker compose
+  hosts: all
+  roles:
+      - docker_compose
