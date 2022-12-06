@@ -16,7 +16,7 @@ pipeline {
             post {
                 always {
                     junit(
-                    allowEmptyResults: true,
+//                     allowEmptyResults: true,
                     testResults: 'hello/target/surefire-reports/TEST-org.example.CalculatorTest.xml'
                     )
                 }
