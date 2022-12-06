@@ -15,7 +15,10 @@ pipeline {
             }
             post {
                 always {
-                    junit 'hello/target/surefire-reports/TEST-org.example.CalculatorTest.xmle/demo/pipeline/hello/target/surefire-reports/TEST-org.example.CalculatorTest.xml'
+                    junit(
+                    allowEmptyResults: true,
+                    testResults: 'hello/target/surefire-reports/TEST-org.example.CalculatorTest.xmle/demo/pipeline/hello/target/surefire-reports/TEST-org.example.CalculatorTest.xml'
+                    )
                 }
             }
         }
