@@ -15,7 +15,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '/var/jenkins_home/workspace/demo/pipeline/hello/target/surefire-reports/*.xml'
+                    junit '/var/jenkins_home/workspace/demo/pipeline/hello/target/surefire-reports/TEST-org.example.CalculatorTest.xml'
                 }
             }
         }
