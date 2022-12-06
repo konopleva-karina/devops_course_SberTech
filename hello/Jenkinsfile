@@ -4,19 +4,14 @@ pipeline {
         maven 'Maven_Home'
     }
     stages {
-        stage('Change workdir') {
-            steps {
-                sh "cd hello/"
-            }
-        }
         stage('Build') {
             steps {
-                sh "mvn clean -B -DskipTests clean package"
+                sh "mvn clean -B -DskipTests clean package -f hello/pom.xml"
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -f hello/pom.xml'
             }
             post {
                 always {
