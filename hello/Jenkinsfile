@@ -16,11 +16,13 @@ pipeline {
             post {
                 always {
                     junit(
-//                     allowEmptyResults: true,
                     testResults: 'hello/target/surefire-reports/TEST-org.example.CalculatorTest.xml'
                     )
                 }
             }
+        }
+        stage('Allure report') {
+            allure includeProperties: false, jdk: '', results: [[path: 'allure_results']]
         }
     }
 }
