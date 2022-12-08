@@ -7,7 +7,7 @@ public class CalculatorTest {
     private final Calculator calculator = new Calculator();
 
     @Test
-    public void testAdd() {
+    public void addTest() {
         Assertions.assertEquals(5, calculator.add(3, 2));
     }
 }
