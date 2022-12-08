@@ -17,7 +17,7 @@ pipeline {
             post {
                 always {
                     junit(
-                    testResults: 'hello/target/surefire-reports/TEST-org.example.CalculatorTest.xml'
+                    testResults: 'hello/target/surefire-reports/TEST-*.xml'
                     )
                 }
             }
