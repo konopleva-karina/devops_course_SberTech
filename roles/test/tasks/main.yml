@@ -1,26 +1,22 @@
-- name: ping
-  ping:
-    
-
 - name: Create docker
   pip:
     name: "docker<5"
   become: yes
 
 - name: Copy roles
-  copy:
+  copy: 
     src: roles
     dest: ~/
 
-- name: Copy services
-  copy:
+- name: Copy serv
+  copy: 
     src: services
     dest: ~/
 
 - name: Run flask app
   community.docker.docker_compose:
     project_src: ~/roles/test/tasks
-    recreate: never
+    files: ["./docker-compose.yml"]
   register: output
 
 - name: debug

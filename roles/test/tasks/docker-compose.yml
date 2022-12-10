@@ -1,12 +1,14 @@
-version: '3.8'
-
 services:
   web:
     build:
       context: ~/services
       dockerfile: flask/Dockerfile
-    # command: "flask --app /usr/src/app/services/flask/hello run"
     ports:
-      - "5000:5000"
+      - "8000:8000"
+      - "22:22"
     volumes:
-      - ~/services/flask/:/usr/src/app/
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  default:
+    name: ping-pong-network
+    external: true
