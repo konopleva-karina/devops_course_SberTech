@@ -1,0 +1,28 @@
+- name: ping
+  ping:
+    
+
+- name: Create docker
+  pip:
+    name: "docker<5"
+  become: yes
+
+- name: Copy roles
+  copy:
+    src: roles
+    dest: ~/
+
+- name: Copy services
+  copy:
+    src: services
+    dest: ~/
+
+- name: Run flask app
+  community.docker.docker_compose:
+    project_src: ~/roles/test/tasks
+    recreate: never
+  register: output
+
+- name: debug
+  debug:
+    var: output

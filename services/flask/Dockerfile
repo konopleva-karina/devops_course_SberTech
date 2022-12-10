@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 # COPY . /usr/src/app/
 
-CMD["flask", "--app", "hello", "run", "-p", "5000", "--host=0.0.0.0"]
+CMD ["flask", "--app", "hello", "run", "-p", "5000", "--host=0.0.0.0"]
