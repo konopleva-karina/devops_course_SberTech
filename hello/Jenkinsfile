@@ -8,13 +8,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh "mvn clean install -f hello/pom.xml"
-                // sh "mvn package -DskipTests -f hello/pom.xml"
             }
-//         }
-//         stage('Test') {
-//             steps {
-//                 sh 'mvn test -f hello/pom.xml'
-//             }
+
             post {
                 always {
                     junit(
