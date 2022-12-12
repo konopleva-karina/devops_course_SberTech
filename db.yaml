@@ -9,10 +9,23 @@ data:
   SQL_PORT: "5432"
 kind: ConfigMap
 metadata:
+  name: env-dev
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
   creationTimestamp: null
   labels:
-    app: web-env-dev
-  name: env-dev
+    app: postgres-data
+  name: postgres-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -56,8 +69,6 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: db
   name: db
 spec:
   ports:
