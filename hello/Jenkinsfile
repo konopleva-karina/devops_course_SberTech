@@ -42,11 +42,9 @@ pipeline {
             withCredentials([
                 string(credentialsId: 'sonar.host.url', variable: 'http://172.22.0.2:9000'),
                 string(credentialsId: 'sonar.login', variable: 'admin'),
-                string(credentialsId: 'sonar.password', variable: '111')
-            ]) {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
+                string(credentialsId: 'sonar.password', variable: '111')]) {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
     }
