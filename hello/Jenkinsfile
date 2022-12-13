@@ -32,21 +32,20 @@ pipeline {
                 }
         }
         stage('SonarQube') {
-            steps {
-                 sh 'mvn sonar:sonar -Dsonar.host.url=http://172.22.0.2:9000 -Dsonar.login=admin -Dsonar.password=111 -X -e -f hello/pom.xml'
-           }
-        }
-
-        stage("Quality gate") {
-            withSonarQubeEnv('SonarQube') {
-            withCredentials([
-                string(credentialsId: 'sonar.host.url', variable: 'http://172.22.0.2:9000'),
-                string(credentialsId: 'sonar.login', variable: 'admin'),
-                string(credentialsId: 'sonar.password', variable: '111')]) {
-                    waitForQualityGate abortPipeline: true
+            withSonarQubeEnv('My SonarQube Server') {
+                steps {
+                     sh 'mvn clean package sonar:sonar -Dsonar.host.url=http://172.22.0.2:9000 -Dsonar.login=admin -Dsonar.password=111 -X -e -f hello/pom.xml'
                 }
             }
         }
+
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
     }
     post {
         always {
