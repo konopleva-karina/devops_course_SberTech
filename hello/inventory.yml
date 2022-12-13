@@ -1,0 +1,14 @@
+all:
+  hosts:
+    prom:
+      ansible_port: "2201"
+      ansible_host: "0.0.0.0"
+      ansible_sudo_pass: "password"
+      ansible_user: "root"
+      ansible_password: "password"
+    dev:
+      ansible_port: "2200"
+      ansible_host: "0.0.0.0"
+      ansible_sudo_pass: "password"
+      ansible_user: "root"
+      ansible_password: "password"
