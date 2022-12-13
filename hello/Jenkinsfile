@@ -46,6 +46,15 @@ pipeline {
               }
             }
           }
+        stage('Deploy PROM') {
+            steps {
+                script {
+                    ansiblePlaybook: 'hello/prom-deploy.yml',
+                    disableHostKeyChecking: true,
+                    inventory: 'hello/inventory.yml'
+                }
+            }
+        }
     }
     post {
         always {
