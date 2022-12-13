@@ -3,6 +3,7 @@ pipeline {
     tools {
         maven 'Maven_Home'
         allure 'Allure'
+        ansible 'Ansible'
     }
     stages {
         stage('Build') {
