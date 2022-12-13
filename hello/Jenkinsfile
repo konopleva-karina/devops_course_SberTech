@@ -49,9 +49,10 @@ pipeline {
         stage('Deploy PROM') {
             steps {
                 script {
-                    ansiblePlaybook playbook: 'ansible-playbook.yml',
+                    ansiblePlaybook (
+                    playbook: 'ansible-playbook.yml',
                     disableHostKeyChecking: true,
-                    inventory: 'hello/inventory.yml'
+                    inventory: 'hello/inventory.yml')
                 }
             }
         }
