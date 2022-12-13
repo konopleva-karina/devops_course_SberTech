@@ -36,6 +36,12 @@ pipeline {
                  sh 'mvn sonar:sonar -Dsonar.host.url=http://172.22.0.2:9000 -Dsonar.login=admin -Dsonar.password=111 -X -e -f hello/pom.xml'
            }
         }
+
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
     }
     post {
         always {
