@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy PROM') {
             steps {
                 script {
-                    ansiblePlaybook playbook: 'hello/prom-deploy.yml',
+                    ansiblePlaybook playbook: 'ansible-playbook.yml',
                     disableHostKeyChecking: true,
                     inventory: 'hello/inventory.yml'
                 }
