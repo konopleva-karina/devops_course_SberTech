@@ -1,4 +1,6 @@
 all:
+  vars:
+    ansible_python_interpreter: /var/jenkins_home/workspace/demo/lab_5/Python-3.9.1/python.exe
   hosts:
     prom:
       ansible_port: "2201"

@@ -46,14 +46,18 @@ pipeline {
               }
             }
           }
+
         stage('Deploy PROM') {
             steps {
-                script {
-                    ansiblePlaybook (
-                    playbook: 'ansible-playbook.yml',
-                    disableHostKeyChecking: true,
-                    inventory: 'hello/inventory.yml')
-                }
+//                 script {
+//                     ansiblePlaybook (
+//                     playbook: 'ansible-playbook.yml',
+//                     installation: 'ansible29',
+//                     disableHostKeyChecking: true,
+//                     inventory: 'hello/inventory.yml')
+//                 }
+                sh "source ~/venv/bin/activate"
+                sh "ansible-playbook -i hello/inventory.yml ansible-playbook.yml"
             }
         }
     }
