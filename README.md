@@ -4,5 +4,5 @@
 
 Поднять docker compose с jenkins и sonarqube из папки hello
 ```bash
-docker-compose --file docker-compose-jenkins.yml up
+docker-compose --file jenkins-sonarqube-create.yml up
 ```
