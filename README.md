@@ -1,6 +1,6 @@
 # devops_course_SberTech
 
-Запуск:
+Запуск одностраничного приложения на Flask:
 
 ```bash
 docker image build -t flask_docker .
